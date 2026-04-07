@@ -1,0 +1,13 @@
+[package]
+name = "emeditor-help-migration-mirror"
+version = "0.1.0"
+edition = "2021"
+authors = ["Makoto Emura <makoto@emurasoft.com>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+worker = { version = "0.7", features = ['http'] }
+worker-macros = { version = "0.7", features = ['http'] }
+http = "1.3"
