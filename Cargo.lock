@@ -63,9 +63,7 @@ dependencies = [
 name = "emeditor-help-migration-mirror"
 version = "0.1.0"
 dependencies = [
- "http",
  "worker",
- "worker-macros",
 ]
 
 [[package]]
