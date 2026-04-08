@@ -18,8 +18,12 @@ async fn fetch(
     let headers = req.headers();
     let new_headers = new_req.headers_mut()?;
     for (name, value) in headers {
+        if name.to_lowercase() == "host" {
+            continue;
+        }
         new_headers.set(&name, &value)?;
     }
+    new_headers.set("host", new_url.host_str().unwrap_or("help.emeditor.com"))?;
 
     Fetch::Request(new_req).send().await
 }
