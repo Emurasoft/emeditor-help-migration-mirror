@@ -25,5 +25,12 @@ async fn fetch(
     }
     new_headers.set("host", new_url.host_str().unwrap_or("emeditor.org"))?;
 
-    Fetch::Request(new_req).send().await
+    console_log!("Request Headers: {:?}", new_req.headers());
+
+    let resp = Fetch::Request(new_req).send().await?;
+
+    console_log!("Response Status: {}", resp.status_code());
+    console_log!("Response Headers: {:?}", resp.headers());
+
+    Ok(resp)
 }
