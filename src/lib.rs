@@ -9,7 +9,7 @@ async fn fetch(
     _ctx: Context,
 ) -> Result<Response> {
     let url = req.url()?;
-    let new_url_str = url.as_str().replace("emeditor.org", "help.emeditor.com");
+    let new_url_str = url.as_str().replace("help.emeditor.com", "emeditor.org");
     let new_url = Url::parse(&new_url_str)?;
 
     let mut new_req = Request::new(new_url.as_str(), req.method())?;
@@ -23,7 +23,7 @@ async fn fetch(
         }
         new_headers.set(&name, &value)?;
     }
-    new_headers.set("host", new_url.host_str().unwrap_or("help.emeditor.com"))?;
+    new_headers.set("host", new_url.host_str().unwrap_or("emeditor.org"))?;
 
     Fetch::Request(new_req).send().await
 }
