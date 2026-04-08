@@ -8,9 +8,9 @@ async fn fetch(
     _env: Env,
     _ctx: Context,
 ) -> Result<Response> {
-    let url = req.url()?;
-    let new_url_str = url.as_str().replace("help.emeditor.com", "emeditor.org");
-    let new_url = Url::parse(&new_url_str)?;
+    let mut url = req.url()?;
+    url.set_host(Some("emeditor.org"))?;
+    let new_url = url;
 
     let mut new_req = Request::new(new_url.as_str(), req.method())?;
     
